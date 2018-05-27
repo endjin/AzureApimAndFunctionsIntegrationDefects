@@ -17,5 +17,9 @@ Where their swagger documents are available from:
 * https://endjinfunctionappa.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 * https://endjinfunctionappb.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 
+## Expected Behaviour
+
+The behaviour we expected was to be able to import the two deployed Function Apps via the APIM "API" Portal UI; for the first Function App using the "Create API" experience and selecting "Function App" and for the second Function App using the "Import API" feature. The expected behaviour was to merge the two OpenAPI definitions into a single document containing both sets of data and to automatically configure the Function Keys to automatically authenticate requests send to the imported Azure Functions.
+
 ## Defects
 
