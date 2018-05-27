@@ -57,6 +57,8 @@ As you can see from the screenshot below, the OpenAPI definition has been correc
 
 **Defect 1 Continued...** Looking at the Form View for Operation-B you can see that the *Display Name* is incorrect as is the *Name* as a guid has been used rather than the valid Operation Id supplied. It is also missing the supplied description.
 
+[Expected](https://raw.githubusercontent.com/endjin/AzureApimAndFunctionsIntegrationDefects/master/Artefacts/Assets/OpenAPI/Merged-Expected.yaml) vs [Actual](https://raw.githubusercontent.com/endjin/AzureApimAndFunctionsIntegrationDefects/master/Artefacts/Assets/OpenAPI/Merged-Actual.yaml) example merged OpenAPI files have been added to this repo.
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/05-Imported-Operation-B-Form-View.png "")
 
 * Navigate to the test console for Operation - A
