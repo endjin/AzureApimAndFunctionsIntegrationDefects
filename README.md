@@ -14,8 +14,8 @@ To explore this candidate architecture, we created a technical spike which consi
 
 Where their swagger documents are available from:
 
-* https://endjinfunctionappa.azurewebsites.net/admin/host/swagger?code=<Function Key>
-* https://endjinfunctionappb.azurewebsites.net/admin/host/swagger?code=<Function Key>
+* https://endjinfunctionappa.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
+* https://endjinfunctionappb.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 
 ## Defects
 
