@@ -1,0 +1,20 @@
+<policies>
+    <inbound>
+        <base />
+        <set-method>POST</set-method>
+        <rewrite-uri id="apim-generated-policy" template="/api/operation/a" />
+        <set-header id="apim-generated-policy" name="Ocp-Apim-Subscription-Key" exists-action="delete" />
+        <set-query-parameter name="code" exists-action="override">
+            <value>FUNCTION AUTHENTICATION KEY</value>
+        </set-query-parameter>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
