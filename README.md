@@ -62,7 +62,7 @@ As you can see from the screenshot below, the OpenAPI definition has been correc
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/06-Operation-A-Test-Console.png "")
 
-**Defect 2** Imported Function App does not have Function Authorization token automatically set in Policy file. This means that calls to the external API / Test UI fail.
+**Defect 2** Imported Function App does not have Function Authorization token automatically set in Policy file. This means that calls to the external API / Test UI fail. Manually updating the policy file to add the authentication key enables calls to authenticate correctly. [Expected](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Policy/Expected.txt) vs [Actual](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Policy/Actual.txt) example policy files have been added to this repo.
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/07-Operation-A-401.png "")
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/08-Operation-B.png "")
