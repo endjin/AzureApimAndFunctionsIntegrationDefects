@@ -17,7 +17,7 @@ Where their swagger documents are available from:
 * https://endjinfunctionappa.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 * https://endjinfunctionappb.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 
-These two functions have identical OpenAPI operations other than they are named Operation A and Operation B and have distinct (but identical request / response models).
+These two functions have identical OpenAPI operations other than they are named Operation A and Operation B and have distinct (but identical) request / response models.
 
 The source for FunctionAppA and FunctionAppB is included in this repo. Publish them to azure as endjinfunctionappa and endjinfunctionappb if you want to repro the steps below.
 
