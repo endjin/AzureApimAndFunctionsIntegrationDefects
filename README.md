@@ -49,15 +49,21 @@ As you can see from the screenshot below, the OpenAPI definition has been correc
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/04-Import-FunctionAppB.png "")
 
-**Defect 1** EndjinFunctionAppB's Operation Id has not been honoured / imported correctly
+**Defect 1** Expected behaviour: values displayed honour values in supplied OpenAPI definition. Actual: EndjinFunctionAppB's Operation Id has not been honoured / imported correctly. 
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/05-Imported-Operation-B.png "")
 
-Looking at the Form View for Operation-B you can see that the *Display Name* is incorrect as is the *Name* as a guid has been used rather than the valid Operation Id supplied.
+**Defect 1 Continued...** Looking at the Form View for Operation-B you can see that the *Display Name* is incorrect as is the *Name* as a guid has been used rather than the valid Operation Id supplied. It is also missing the supplied description.
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/05-Imported-Operation-B-Form-View.png "")
 
+* Navigate to the test console for Operation - A
+* Click the text button
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/06-Operation-A-Test-Console.png "")
+
+**Defect 2** Imported Function App does not have Function Authorization token automatically set in Policy file. This means that calls to the external API / Test UI fail.
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/07-Operation-A-401.png "")
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/08-Operation-B.png "")
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/09-Developer-Portal-Operation-A.png "")
