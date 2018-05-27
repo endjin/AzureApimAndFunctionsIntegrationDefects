@@ -17,14 +17,16 @@ Where their swagger documents are available from:
 * https://endjinfunctionappa.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 * https://endjinfunctionappb.azurewebsites.net/admin/host/swagger?code= &lt;Function Key&gt;
 
+These two functions have identical OpenAPI operations other than they are named Operation A and Operation B and have distinct (but identical request / response models).
+
 ## Expected Behaviour
 
 The behaviour we expected was to be able to import the two deployed Function Apps via the APIM "API" Portal UI; for the first Function App using the "Create API" experience and selecting "Function App" and for the second Function App using the "Import API" feature. The expected behaviour was to merge the two OpenAPI definitions into a single document containing both sets of data and to automatically configure the Function Keys to automatically authenticate requests send to the imported Azure Functions.
 
 ## Defects
 
-1. Functions added via the UI do not automatically add the Function Key to the generated policy - thus all calls made via the Test UI fail with a 401 not authorised error.
-2. While the first Function is imported correctly (i.e. Operation Id as specified in the original OpenAPI definition) any subsequent Function is incorrectly imported; a different Operation Id is generated, model schemas are ignored.
+1. Functions added via the UI do not automatically add the Function Key to the generated policy - thus all calls made via the APIM generated API or the Test UI fail with a 401 not authorised error.
+2. While the first Function is imported correctly (i.e. Operation Id as specified in the original OpenAPI definition) any subsequent Function is incorrectly imported; a different Operation Id is generated, model schemas are ignored. This also means that API definitions as listed in the public Developer Portal are also incorrect.
 
 ## Repro Steps
 
@@ -35,10 +37,26 @@ The behaviour we expected was to be able to import the two deployed Function App
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/01-Create-From-Function-App.png "")
 
+As you can see from the screenshot below, the OpenAPI definition has been correctly imported. The original Operation Id "Operation_A" and display name "Operation - A" have been used.
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/02-Imported-Operation-A.png "")
+
+* Select "Import" from the "Composite Functions" context menu.
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/03-Import-FunctionAppB.png "")
+
+* Select EndjinFunctionAppB.
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/04-Import-FunctionAppB.png "")
+
+**Defect 1** EndjinFunctionAppB's Operation Id has not been honoured / imported correctly
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/05-Imported-Operation-B.png "")
+
+Looking at the Form View for Operation-B you can see that the *Display Name* is incorrect as is the *Name* as a guid has been used rather than the valid Operation Id supplied.
+
+![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/05-Imported-Operation-B-Form-View.png "")
+
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/06-Operation-A-Test-Console.png "")
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/07-Operation-A-401.png "")
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/08-Operation-B.png "")
