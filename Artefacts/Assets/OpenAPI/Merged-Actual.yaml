@@ -1,0 +1,64 @@
+swagger: '2.0'
+info:
+  title: Composite Functions
+  version: '1.0'
+host: endjinapimdev.azure-api.net
+basePath: /composite
+schemes:
+  - https
+securityDefinitions:
+  apiKeyHeader:
+    type: apiKey
+    name: Ocp-Apim-Subscription-Key
+    in: header
+  apiKeyQuery:
+    type: apiKey
+    name: subscription-key
+    in: query
+security:
+  - apiKeyHeader: []
+  - apiKeyQuery: []
+paths:
+  /api/operation/a:
+    post:
+      description: Operation - A
+      operationId: Operation_A
+      summary: Operation - A
+      parameters:
+        - name: functionARequest
+          in: body
+          schema:
+            $ref: '#/definitions/FunctionARequest'
+          description: Performs Operation A
+      consumes:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/FunctionAResponse'
+      produces:
+        - application/json
+  /api/operation/b:
+    post:
+      operationId: 5b0a7b21073c1627855284f9
+      summary: Operation_B
+      responses:
+        '200':
+          description: OK
+definitions:
+  FunctionARequest:
+    type: object
+    properties:
+      Id:
+        type: string
+      Content:
+        type: string
+    example: "{\r\n  \"id\": 123,\r\n  \"content\": \"hello\"\r\n}"
+  FunctionAResponse:
+    type: object
+    properties:
+      Result:
+        type: string
+    example:
+      result: 123 hello

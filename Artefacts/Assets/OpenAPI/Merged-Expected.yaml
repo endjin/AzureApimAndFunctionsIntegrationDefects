@@ -1,0 +1,102 @@
+swagger: '2.0'
+info:
+  title: Composite Functions
+  version: '1.0'
+host: endjinapimdev.azure-api.net
+basePath: /composite
+schemes:
+  - https
+securityDefinitions:
+  apiKeyHeader:
+    type: apiKey
+    name: Ocp-Apim-Subscription-Key
+    in: header
+  apiKeyQuery:
+    type: apiKey
+    name: subscription-key
+    in: query
+security:
+  - apiKeyHeader: []
+  - apiKeyQuery: []
+paths:
+  /api/operation/a:
+    post:
+      tags:
+        - Operation
+      summary: Operation - A
+      operationId: Operation_A
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: request
+          in: body
+          description: >-
+            Performs Operation A
+          required: true
+          schema:
+            $ref: '#/definitions/FunctionARequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/FunctionAResponse'
+  /api/operation/b:
+    post:
+      tags:
+        - Operation
+      summary: Operation - B
+      operationId: Operation_B
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: request
+          in: body
+          description: >-
+            Performs Operation B
+          required: true
+          schema:
+            $ref: '#/definitions/FunctionBRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/FunctionBResponse'
+definitions:
+  FunctionARequest:
+    type: object
+    properties:
+      Id:
+        type: string
+      Content:
+        type: string
+    example:
+      id: 123
+      content: hello
+  FunctionAResponse:
+    type: object
+    properties:
+      Result:
+        type: string
+    example:
+      result: 123 hello
+  FunctionBRequest:
+    type: object
+    properties:
+      Id:
+        type: string
+      Content:
+        type: string
+    example:
+      id: 456
+      content: goodbye
+  FunctionBResponse:
+    type: object
+    properties:
+      Result:
+        type: string
+    example:
+      result: 456 goodbye
