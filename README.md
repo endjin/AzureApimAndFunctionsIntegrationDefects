@@ -19,6 +19,10 @@ Where their swagger documents are available from:
 
 These two functions have identical OpenAPI operations other than they are named Operation A and Operation B and have distinct (but identical request / response models).
 
+The source for FunctionAppA and FunctionAppB is included in this repo. Publish them to azure as endjinfunctionappa and endjinfunctionappb if you want to repro the steps below.
+
+**Note** The sample projects use the [OpenAPI Converter for Visual Studio 2017](https://github.com/endjin/Endjin.OpenAPI.Converters/releases) to autogenerate the swagger.json file Azure Functions required from the more easy to work with swagger.yaml files.
+
 ## Expected Behaviour
 
 The behaviour we expected was to be able to import the two deployed Function Apps via the APIM "API" Portal UI; for the first Function App using the "Create API" experience and selecting "Function App" and for the second Function App using the "Import API" feature. The expected behaviour was to merge the two OpenAPI definitions into a single document containing both sets of data and to automatically configure the Function Keys to automatically authenticate requests send to the imported Azure Functions.
@@ -32,6 +36,7 @@ The behaviour we expected was to be able to import the two deployed Function App
 
 ## Repro Steps
 
+* The source for FunctionAppA and FunctionAppB is included in this repo.
 * From your APIM instance select "APIs" from the menu. 
 * Click the "+ Add API" link
 * Select "Function App"
