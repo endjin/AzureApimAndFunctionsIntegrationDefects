@@ -1,4 +1,4 @@
-# Azure API Management & Azure Functions Integration Defects
+# Azure API Management & Functions Integration Defects
 
 ## Summary
 We are attempting to take IP currently held in over 200 Nuget Packages and turn them into a set of RESTful APIs to enable easier consumption.
