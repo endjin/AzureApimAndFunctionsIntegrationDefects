@@ -25,8 +25,10 @@ The behaviour we expected was to be able to import the two deployed Function App
 
 ## Defects
 
-1. Functions added via the UI do not automatically add the Function Key to the generated policy - thus all calls made via the APIM generated API or the Test UI fail with a 401 not authorised error.
-2. While the first Function is imported correctly (i.e. Operation Id as specified in the original OpenAPI definition) any subsequent Function is incorrectly imported; a different Operation Id is generated, model schemas are ignored. This also means that API definitions as listed in the public Developer Portal are also incorrect.
+* Functions added via the UI do not automatically add the Function Key to the generated policy - thus all calls made via the APIM generated API or the Test UI fail with a 401 not authorised error.
+* While the first Function is imported correctly (i.e. Operation Id as specified in the original OpenAPI definition) any subsequent Function is incorrectly imported; a different Operation Id is generated, model schemas are ignored. 
+* Because subsequent OpenAPI documents are not been imported / merged correctly the Test UI is incorrect / fails to run.
+* This also means that API definitions as listed in the public Developer Portal are also incorrect / fails to run.
 
 ## Repro Steps
 
