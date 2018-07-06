@@ -1,5 +1,9 @@
 # Azure API Management & Functions Integration Defects
 
+## Update 06/07/2018
+
+While part of Defect 1 has been fixed (importing a 2nd Azure Function with the same Operation Id format), the rest of the defects are still present. 
+
 ## Summary
 We are attempting to take IP currently held in over 200 Nuget Packages and turn them into a set of RESTful APIs to enable easier consumption.
 
@@ -29,10 +33,10 @@ The behaviour we expected was to be able to import the two deployed Function App
 
 ## Defects
 
-* Functions added via the UI do not automatically add the Function Key to the generated policy - thus all calls made via the APIM generated API or the Test UI fail with a 401 not authorised error.
-* While the first Function is imported correctly (i.e. Operation Id as specified in the original OpenAPI definition) any subsequent Function is incorrectly imported; a different Operation Id is generated, model schemas are ignored. 
-* Because subsequent OpenAPI documents are not been imported / merged correctly the Test UI is incorrect / fails to run.
-* This also means that API definitions as listed in the public Developer Portal are also incorrect / fails to run.
+1. ~~While the first Function is imported correctly (i.e. Operation Id as specified in the original OpenAPI definition) any subsequent Function is incorrectly imported; a different Operation Id is generated,~~ subsequent Function OpenAPI model schemas are ignored / not merged in correctly. 
+2. Functions added via the UI do not automatically add the Function Key to the generated policy / Names Values - thus all calls made via the APIM generated API or the Test UI fail with a 401 not authorised error.
+3. Because subsequent OpenAPI documents are not been imported / merged correctly the Test UI is incorrect / fails to run.
+4. This also means that API definitions as listed in the public Developer Portal are also incorrect / fails to run.
 
 ## Repro Steps
 
@@ -56,11 +60,11 @@ As you can see from the screenshot below, the OpenAPI definition has been correc
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/04-Import-FunctionAppB.png "")
 
-**Defect 1** Expected behaviour: values displayed honour values in supplied OpenAPI definition. Actual: EndjinFunctionAppB's Operation Id has not been honoured / imported correctly. 
+~~**Defect 1** Expected behaviour: values displayed honour values in supplied OpenAPI definition. Actual: EndjinFunctionAppB's Operation Id has not been honoured / imported correctly. ~~
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/05-Imported-Operation-B.png "")
 
-**Defect 1 Continued...** Looking at the Form View for Operation-B you can see that the *Display Name* is incorrect as is the *Name* as a guid has been used rather than the valid Operation Id supplied. It is also missing the supplied description.
+~~**Defect 1 Continued...** Looking at the Form View for Operation-B you can see that the *Display Name* is incorrect as is the *Name* as a guid has been used rather than the valid Operation Id supplied. It is also missing the supplied description.~~
 
 [Expected](https://raw.githubusercontent.com/endjin/AzureApimAndFunctionsIntegrationDefects/master/Artefacts/Assets/OpenAPI/Merged-Expected.yaml) vs [Actual](https://raw.githubusercontent.com/endjin/AzureApimAndFunctionsIntegrationDefects/master/Artefacts/Assets/OpenAPI/Merged-Actual.yaml) example merged OpenAPI files have been added to this repo.
 
@@ -71,7 +75,7 @@ As you can see from the screenshot below, the OpenAPI definition has been correc
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/06-Operation-A-Test-Console.png "")
 
-**Defect 2** Imported Function App does not have Function Authorization token automatically set in Policy file. This means that calls to the external API / Test UI fail. Manually updating the policy file to add the authentication key enables calls to authenticate correctly. [Expected](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Policy/Expected.txt) vs [Actual](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Policy/Actual.txt) example policy files have been added to this repo.
+**Defect 2** Imported Function App does not have Function Authorization token automatically set in Policy file / Named Values. This means that calls to the external API / Test UI fail. Manually updating the policy file to add the authentication key enables calls to authenticate correctly. I could not find any documentation about adding the Authorization token to the Named Vales or what the key should be. [Expected](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Policy/Expected.txt) vs [Actual](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Policy/Actual.txt) example policy files have been added to this repo.
 
 ![](https://github.com/endjin/AzureApimAndFunctionsIntegrationDefects/raw/master/Artefacts/Assets/Images/07-Operation-A-401.png "")
 
